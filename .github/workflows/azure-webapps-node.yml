@@ -1,0 +1,475 @@
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Water Chain Research Survey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .step { display: none; }
+        .step.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col justify-between">
+    <header class="bg-teal-700 text-white py-6 shadow-md">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-xl md:text-2xl font-bold tracking-wide uppercase">Research Survey Questionnaire</h1>
+            <p class="text-sm md:text-base mt-1 text-teal-100 font-medium">Kajo-Keji Health Training Institute</p>
+        </div>
+    </header>
+    
+    <main class="max-w-4xl w-full mx-auto p-4 md:p-6 my-6 bg-white shadow-xl rounded-xl border border-gray-100 flex-grow">
+        
+        <div id="intro-card" class="bg-teal-50 border-l-4 border-teal-600 p-4 mb-6 rounded-r-lg text-sm leading-relaxed">
+            <p class="font-semibold text-teal-900 mb-1">Dear respondent,</p>
+            <p class="text-gray-700">
+                I am <strong>MILTON MOGGA</strong>, a student of Kajo-Keji Health Training Institute conducting a research study on the, 
+                <span class="italic font-medium text-teal-950">“Knowledge, Attitudes and Practices regarding safe water chain among in-income household of Eruba, Vurra sub county, Arua district.”</span> 
+                You are kindly requested to participate in this research study, which is purely for academic purposes and all the information shall be treated with utmost confidentiality. You may answer these questions.
+            </p>
+        </div>
+
+        <form id="surveyForm" action="https://formspree.io/f/toneyclerk345@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Date</label>
+                    <input type="date" name="Survey_Date" required id="survey_date" class="w-full border p-2 rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Respondent's Number</label>
+                    <input type="text" name="Respondent_Number" required id="respondent_no" placeholder="e.g. 001" class="w-full border p-2 rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Signature Confirmation</label>
+                    <label class="inline-flex items-center mt-2 cursor-pointer">
+                        <input type="checkbox" name="Signature_Agreement" value="Agreed and Signed" required class="form-checkbox h-5 w-5 text-teal-600 rounded focus:ring-teal-500">
+                        <span class="ml-2 text-sm text-gray-700">Respondent Agrees/Signed</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <div class="flex justify-between text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                    <span id="prog-A" class="text-teal-700">Sec A: Demographic</span>
+                    <span id="prog-B">Sec B: Knowledge</span>
+                    <span id="prog-C">Sec C: Attitudes</span>
+                    <span id="prog-D">Sec D: Practices</span>
+                </div>
+                <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                    <div id="progressBar" class="bg-teal-600 h-full transition-all duration-300 w-1/4"></div>
+                </div>
+            </div>
+
+            <div class="step active" id="step1">
+                <h2 class="text-lg font-bold text-teal-800 border-b pb-2 mb-4">Section A: Socio-demographic characteristics</h2>
+                
+                <div class="space-y-5">
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">1. Sex of respondent <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q1_sex" value="Male" required class="h-4 w-4 text-teal-600"> <span class="ml-2">Male</span></label>
+                            <label class="flex items-center"><input type="radio" name="q1_sex" value="Female" class="h-4 w-4 text-teal-600"> <span class="ml-2">Female</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">2. Age of respondent <span class="text-red-500">*</span></p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="radio" name="q2_age" value="18–24" required class="h-4 w-4 text-teal-600"> <span class="ml-2">18–24</span></label>
+                            <label class="flex items-center"><input type="radio" name="q2_age" value="25–34" class="h-4 w-4 text-teal-600"> <span class="ml-2">25–34</span></label>
+                            <label class="flex items-center"><input type="radio" name="q2_age" value="35–44" class="h-4 w-4 text-teal-600"> <span class="ml-2">35–44</span></label>
+                            <label class="flex items-center"><input type="radio" name="q2_age" value="45 and above" class="h-4 w-4 text-teal-600"> <span class="ml-2">45 and above</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">3. Are you married? <span class="text-red-500">*</span></p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="radio" name="q3_marital" value="Single" required class="h-4 w-4 text-teal-600"> <span class="ml-2">Single</span></label>
+                            <label class="flex items-center"><input type="radio" name="q3_marital" value="Married" class="h-4 w-4 text-teal-600"> <span class="ml-2">Married</span></label>
+                            <label class="flex items-center"><input type="radio" name="q3_marital" value="Divorced/Separated" class="h-4 w-4 text-teal-600"> <span class="ml-2">Divorced / Separated</span></label>
+                            <label class="flex items-center"><input type="radio" name="q3_marital" value="Widowed" class="h-4 w-4 text-teal-600"> <span class="ml-2">Widowed</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">4. What level of education have you attained? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q4_education" value="No formal education" required class="h-4 w-4 text-teal-600"> <span class="ml-2">No formal education</span></label>
+                            <label class="flex items-center"><input type="radio" name="q4_education" value="Primary" class="h-4 w-4 text-teal-600"> <span class="ml-2">Primary</span></label>
+                            <label class="flex items-center"><input type="radio" name="q4_education" value="Institute/University" class="h-4 w-4 text-teal-600"> <span class="ml-2">Institute / University</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">5. What is your main occupation of household? <span class="text-red-500">*</span></p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="radio" name="q5_occupation" value="Subsistence farmer" required onclick="toggleSpecify('q5_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Subsistence farmer</span></label>
+                            <label class="flex items-center"><input type="radio" name="q5_occupation" value="Casual laborer" onclick="toggleSpecify('q5_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Casual laborer</span></label>
+                            <label class="flex items-center"><input type="radio" name="q5_occupation" value="Business" onclick="toggleSpecify('q5_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Business</span></label>
+                            <label class="flex items-center"><input type="radio" name="q5_occupation" value="Civil servant" onclick="toggleSpecify('q5_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Civil servant</span></label>
+                            <label class="flex items-center"><input type="radio" name="q5_occupation" value="Unemployed" onclick="toggleSpecify('q5_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Unemployed</span></label>
+                            <label class="flex items-center"><input type="radio" name="q5_occupation" value="Other" id="q5_other_radio" onclick="toggleSpecify('q5_spec', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q5_occupation_other" id="q5_spec" placeholder="Please specify occupation..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">6. How many people living in this household? <span class="text-red-500">*</span></p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="radio" name="q6_size" value="1–3" required class="h-4 w-4 text-teal-600"> <span class="ml-2">1–3</span></label>
+                            <label class="flex items-center"><input type="radio" name="q6_size" value="4–6" class="h-4 w-4 text-teal-600"> <span class="ml-2">4–6</span></label>
+                            <label class="flex items-center"><input type="radio" name="q6_size" value="7–9" class="h-4 w-4 text-teal-600"> <span class="ml-2">7–9</span></label>
+                            <label class="flex items-center"><input type="radio" name="q6_size" value="10 and above" class="h-4 w-4 text-teal-600"> <span class="ml-2">10 and above</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step2">
+                <h2 class="text-lg font-bold text-teal-800 border-b pb-2 mb-4">Section B: Knowledge regarding safe water chain</h2>
+                
+                <div class="space-y-5">
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">7. What is your main source of drinking water? (Tick one) <span class="text-red-500">*</span></p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="radio" name="q7_source" value="Borehole" required onclick="toggleSpecify('q7_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Borehole</span></label>
+                            <label class="flex items-center"><input type="radio" name="q7_source" value="spring" onclick="toggleSpecify('q7_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Spring</span></label>
+                            <label class="flex items-center"><input type="radio" name="q7_source" value="Open well" onclick="toggleSpecify('q7_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Open well</span></label>
+                            <label class="flex items-center"><input type="radio" name="q7_source" value="stream" onclick="toggleSpecify('q7_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Stream</span></label>
+                            <label class="flex items-center"><input type="radio" name="q7_source" value="Piped water" onclick="toggleSpecify('q7_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Piped water</span></label>
+                            <label class="flex items-center"><input type="radio" name="q7_source" value="Rainwater" onclick="toggleSpecify('q7_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Rainwater</span></label>
+                            <label class="flex items-center col-span-2"><input type="radio" name="q7_source" value="Other" onclick="toggleSpecify('q7_spec', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q7_source_other" id="q7_spec" placeholder="Please specify water source..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">8. Have you ever heard about the term “safe water chain”? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q8_heard" value="Yes" required onclick="toggleConditional('q9_panel', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Yes</span></label>
+                            <label class="flex items-center"><input type="radio" name="q8_heard" value="No" onclick="toggleConditional('q9_panel', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">No</span></label>
+                        </div>
+                    </div>
+                    
+                    <div id="q9_panel" class="hidden bg-gray-50 border border-dashed border-gray-300 p-4 rounded-lg">
+                        <p class="font-medium text-gray-900 mb-2">9. If yes, from where did you hear about safe water or safe water chain? (You may tick more than one)</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="checkbox" name="q9_source_media[]" value="Health worker" class="h-4 w-4 text-teal-600"> <span class="ml-2">Health worker</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q9_source_media[]" value="Radio" class="h-4 w-4 text-teal-600"> <span class="ml-2">Radio</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q9_source_media[]" value="Community meeting" class="h-4 w-4 text-teal-600"> <span class="ml-2">Community meeting</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q9_source_media[]" value="School" class="h-4 w-4 text-teal-600"> <span class="ml-2">School</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q9_source_media[]" value="NGO or project staff" class="h-4 w-4 text-teal-600"> <span class="ml-2">NGO or project staff</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q9_source_media[]" value="Friends / relatives" class="h-4 w-4 text-teal-600"> <span class="ml-2">Friends / relatives</span></label>
+                            <label class="flex items-center col-span-2"><input type="checkbox" name="q9_source_media[]" value="Other" onclick="toggleSpecify('q9_spec', this.checked)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q9_source_media_other" id="q9_spec" placeholder="Please specify channel..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">10. In your opinion, can clean-looking water still contain germs that cause disease? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q10_germs" value="Yes" required class="h-4 w-4 text-teal-600"> <span class="ml-2">Yes</span></label>
+                            <label class="flex items-center"><input type="radio" name="q10_germs" value="No" class="h-4 w-4 text-teal-600"> <span class="ml-2">No</span></label>
+                            <label class="flex items-center"><input type="radio" name="q10_germs" value="Don't know" class="h-4 w-4 text-teal-600"> <span class="ml-2">Don't know</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">11. At which of the following points do you think water can become contaminated? (You may tick more than one)</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="checkbox" name="q11_points[]" value="At the water source" class="h-4 w-4 text-teal-600"> <span class="ml-2">At the water source</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q11_points[]" value="During collection into containers" class="h-4 w-4 text-teal-600"> <span class="ml-2">During collection into containers</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q11_points[]" value="During transportation from source to home" class="h-4 w-4 text-teal-600"> <span class="ml-2">During transportation from source to home</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q11_points[]" value="During storage at home" class="h-4 w-4 text-teal-600"> <span class="ml-2">During storage at home</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q11_points[]" value="During drawing/serving the water" class="h-4 w-4 text-teal-600"> <span class="ml-2">During drawing/serving the water</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q11_points[]" value="During drinking" class="h-4 w-4 text-teal-600"> <span class="ml-2">During drinking</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q11_points[]" value="I don't know" class="h-4 w-4 text-teal-600"> <span class="ml-2">I don't know</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">12. Which of the following diseases can be caused by drinking contaminated water? (You may tick more than one)</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="checkbox" name="q12_diseases[]" value="Diarrhea" class="h-4 w-4 text-teal-600"> <span class="ml-2">Diarrhea</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q12_diseases[]" value="Typhoid" class="h-4 w-4 text-teal-600"> <span class="ml-2">Typhoid</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q12_diseases[]" value="Cholera" class="h-4 w-4 text-teal-600"> <span class="ml-2">Cholera</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q12_diseases[]" value="Worm infestation" class="h-4 w-4 text-teal-600"> <span class="ml-2">Worm infestation</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q12_diseases[]" value="Skin diseases" class="h-4 w-4 text-teal-600"> <span class="ml-2">Skin diseases</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q12_diseases[]" value="I don't know" class="h-4 w-4 text-teal-600"> <span class="ml-2">I don't know</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">13. Do you know any methods of making water safer to drink at home? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q13_know_methods" value="Yes" required onclick="toggleConditional('q13_panel', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Yes</span></label>
+                            <label class="flex items-center"><input type="radio" name="q13_know_methods" value="No" onclick="toggleConditional('q13_panel', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">No</span></label>
+                        </div>
+                    </div>
+                    
+                    <div id="q13_panel" class="hidden bg-gray-50 border border-dashed border-gray-300 p-4 rounded-lg">
+                        <p class="font-medium text-gray-900 mb-2">If yes, which methods do you know? (You may tick more than one)</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="checkbox" name="q13_methods[]" value="Boiling" class="h-4 w-4 text-teal-600"> <span class="ml-2">Boiling</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q13_methods[]" value="Chlorine (Water Guard)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Chlorine (Water Guard)</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q13_methods[]" value="Letting water settle" class="h-4 w-4 text-teal-600"> <span class="ml-2">Letting water settle</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q13_methods[]" value="Other" onclick="toggleSpecify('q13_spec', this.checked)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q13_methods_other" id="q13_spec" placeholder="Please specify method..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">14. What kind of container is best for safe storage of drinking water? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q14_container" value="Covered container with narrow mouth" required class="h-4 w-4 text-teal-600"> <span class="ml-2">Covered container with narrow mouth</span></label>
+                            <label class="flex items-center"><input type="radio" name="q14_container" value="Open bucket" class="h-4 w-4 text-teal-600"> <span class="ml-2">Open bucket</span></label>
+                            <label class="flex items-center"><input type="radio" name="q14_container" value="Jerrycan without a lid" class="h-4 w-4 text-teal-600"> <span class="ml-2">Jerrycan without a lid</span></label>
+                            <label class="flex items-center"><input type="radio" name="q14_container" value="Any container is fine" class="h-4 w-4 text-teal-600"> <span class="ml-2">Any container is fine</span></label>
+                            <label class="flex items-center"><input type="radio" name="q14_container" value="Don't know" class="h-4 w-4 text-teal-600"> <span class="ml-2">Don't know</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step3">
+                <h2 class="text-lg font-bold text-teal-800 border-b pb-2 mb-2">Section C: Attitudes regarding safe water chain</h2>
+                <p class="text-xs text-gray-500 mb-6 italic">Please indicate your level of agreement with the statements below: (1 = Strongly disagree, 2 = Disagree, 3 = Not sure, 4 = Agree, 5 = Strongly agree)</p>
+                
+                <div class="space-y-6">
+                    <script>
+                        const statements = [
+                            { n: 15, text: "“Using safe drinking water is very important for my family’s health.”" },
+                            { n: 16, text: "“It is worth spending time and money to keep drinking water safe at home.”" },
+                            { n: 17, text: "“Boiling or treating water is not necessary if it looks clean and clear.”" },
+                            { n: 18, text: "“Handwashing with soap before drawing or serving drinking water is very important.”" },
+                            { n: 19, text: "“Using a cup with a handle or tap is better than dipping hands into the water container.”" },
+                            { n: 20, text: "“Maintaining a safe water chain is too time-consuming for my household.”" },
+                            { n: 21, text: "“If others in my community do not treat their water, there is no need for me to do it.”" },
+                            { n: 22, text: "“Women and girls should not bear all the responsibility for maintaining safe water at home; all household members should help.”" },
+                            { n: 23, text: "“I feel confident that I can keep my family’s drinking water safe if I am given the right information and support.”" }
+                        ];
+                        statements.forEach(st => {
+                            document.write(`
+                                <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                    <p class="font-medium text-gray-800 mb-3 text-sm md:text-base">${st.n}. ${st.text} <span class="text-red-500">*</span></p>
+                                    <div class="max-w-md mx-auto grid grid-cols-5 gap-1 text-center">
+                                        ${[1,2,3,4,5].map(v => `
+                                            <label class="flex flex-col items-center cursor-pointer p-1">
+                                                <input type="radio" name="q${st.n}_likert" value="${v}" required class="h-4 w-4 text-teal-600 focus:ring-teal-500">
+                                                <span class="text-xs mt-1 font-bold text-gray-600">${v}</span>
+                                            </label>
+                                        `).join('')}
+                                    </div>
+                                    <div class="flex justify-between max-w-md mx-auto text-[10px] text-gray-400 font-semibold px-2 mt-1">
+                                        <span>Strongly Disagree</span>
+                                        <span>Neutral</span>
+                                        <span>Strongly Agree</span>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="step" id="step4">
+                <h2 class="text-lg font-bold text-teal-800 border-b pb-2 mb-4">Section D: Practices regarding safe water chain</h2>
+                
+                <div class="space-y-5">
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">24. Who usually collects drinking water for your household? <span class="text-red-500">*</span></p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="radio" name="q24_collector" value="woman" required onclick="toggleSpecify('q24_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Woman</span></label>
+                            <label class="flex items-center"><input type="radio" name="q24_collector" value="man" onclick="toggleSpecify('q24_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Man</span></label>
+                            <label class="flex items-center"><input type="radio" name="q24_collector" value="Girl" onclick="toggleSpecify('q24_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Girl</span></label>
+                            <label class="flex items-center"><input type="radio" name="q24_collector" value="Boy" onclick="toggleSpecify('q24_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Boy</span></label>
+                            <label class="flex items-center col-span-2"><input type="radio" name="q24_collector" value="Other" onclick="toggleSpecify('q24_spec', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q24_collector_other" id="q24_spec" placeholder="Specify who..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">25. What type of container do you mainly use to collect water? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q25_container" value="Jerrycan (with cover)" required onclick="toggleSpecify('q25_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Jerrycan (with cover)</span></label>
+                            <label class="flex items-center"><input type="radio" name="q25_container" value="Jerrycan (without cover)" onclick="toggleSpecify('q25_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Jerrycan (without cover)</span></label>
+                            <label class="flex items-center"><input type="radio" name="q25_container" value="Bucket with lid" onclick="toggleSpecify('q25_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Bucket with lid</span></label>
+                            <label class="flex items-center"><input type="radio" name="q25_container" value="Bucket without lid" onclick="toggleSpecify('q25_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Bucket without lid</span></label>
+                            <label class="flex items-center"><input type="radio" name="q25_container" value="Other" onclick="toggleSpecify('q25_spec', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q25_container_other" id="q25_spec" placeholder="Specify container structural type..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">26. Before filling the container at the source, how often do you usually wash or rinse it? <span class="text-red-500">*</span></p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="radio" name="q26_rinse" value="Every time" required class="h-4 w-4 text-teal-600"> <span class="ml-2">Every time</span></label>
+                            <label class="flex items-center"><input type="radio" name="q26_rinse" value="Sometimes" class="h-4 w-4 text-teal-600"> <span class="ml-2">Sometimes</span></label>
+                            <label class="flex items-center"><input type="radio" name="q26_rinse" value="Rarely" class="h-4 w-4 text-teal-600"> <span class="ml-2">Rarely</span></label>
+                            <label class="flex items-center"><input type="radio" name="q26_rinse" value="Never" class="h-4 w-4 text-teal-600"> <span class="ml-2">Never</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">27. Where do you usually store drinking water at home? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q27_storage" value="In the same container used for collection" required onclick="toggleSpecify('q27_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">In the same container used for collection</span></label>
+                            <label class="flex items-center"><input type="radio" name="q27_storage" value="Transferred to a separate clean container" onclick="toggleSpecify('q27_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Transferred to a separate clean container</span></label>
+                            <label class="flex items-center"><input type="radio" name="q27_storage" value="Other" onclick="toggleSpecify('q27_spec', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q27_storage_other" id="q27_spec" placeholder="Specify storage method..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">28. Are your drinking water storage containers usually covered? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q28_covered" value="Always" required class="h-4 w-4 text-teal-600"> <span class="ml-2">Always</span></label>
+                            <label class="flex items-center"><input type="radio" name="q28_covered" value="Sometimes" class="h-4 w-4 text-teal-600"> <span class="ml-2">Sometimes</span></label>
+                            <label class="flex items-center"><input type="radio" name="q28_covered" value="Never" class="h-4 w-4 text-teal-600"> <span class="ml-2">Never</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">29. How do you normally draw water from the storage container for drinking? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q29_draw" value="Pouring directly from the container" required onclick="toggleSpecify('q29_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Pouring directly from the container</span></label>
+                            <label class="flex items-center"><input type="radio" name="q29_draw" value="Using a cup with a handle kept in a clean place" onclick="toggleSpecify('q29_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Using a cup with a handle kept in a clean place</span></label>
+                            <label class="flex items-center"><input type="radio" name="q29_draw" value="Using a cup kept on top of the container" onclick="toggleSpecify('q29_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Using a cup kept on top of the container</span></label>
+                            <label class="flex items-center"><input type="radio" name="q29_draw" value="Using hands" onclick="toggleSpecify('q29_spec', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Using hands</span></label>
+                            <label class="flex items-center"><input type="radio" name="q29_draw" value="Other" onclick="toggleSpecify('q29_spec', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q29_draw_other" id="q29_spec" placeholder="Specify drawing practice..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900 mb-2">30. Do you currently treat your drinking water at home? <span class="text-red-500">*</span></p>
+                        <div class="space-y-2">
+                            <label class="flex items-center"><input type="radio" name="q30_treat" value="Yes, always" required onclick="toggleConditional('q30_panel', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Yes, always</span></label>
+                            <label class="flex items-center"><input type="radio" name="q30_treat" value="Yes, sometimes" onclick="toggleConditional('q30_panel', true)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Yes, sometimes</span></label>
+                            <label class="flex items-center"><input type="radio" name="q30_treat" value="No, never" onclick="toggleConditional('q30_panel', false)" class="h-4 w-4 text-teal-600"> <span class="ml-2">No, never</span></label>
+                        </div>
+                    </div>
+                    
+                    <div id="q30_panel" class="hidden bg-gray-50 border border-dashed border-gray-300 p-4 rounded-lg">
+                        <p class="font-medium text-gray-900 mb-2">If yes, which method(s) do you use most frequently?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <label class="flex items-center"><input type="checkbox" name="q30_methods[]" value="Boiling" class="h-4 w-4 text-teal-600"> <span class="ml-2">Boiling</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q30_methods[]" value="Chlorine" class="h-4 w-4 text-teal-600"> <span class="ml-2">Chlorine (Water Guard or similar)</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q30_methods[]" value="Filtering" class="h-4 w-4 text-teal-600"> <span class="ml-2">Filtering (e.g. cloth/filter)</span></label>
+                            <label class="flex items-center"><input type="checkbox" name="q30_methods[]" value="Purification tablets" class="h-4 w-4 text-teal-600"> <span class="ml-2">Water purification tablets</span></label>
+                            <label class="flex items-center col-span-2"><input type="checkbox" name="q30_methods[]" value="Other" onclick="toggleSpecify('q30_spec', this.checked)" class="h-4 w-4 text-teal-600"> <span class="ml-2">Other (specify)</span></label>
+                        </div>
+                        <input type="text" name="q30_methods_other" id="q30_spec" placeholder="Specify treatment method..." class="hidden mt-2 w-full md:w-1/2 border p-2 text-sm rounded-md focus:ring-2 focus:ring-teal-500 outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-6 mt-8 border-t border-gray-200">
+                <button type="button" id="prevBtn" onclick="navigateStep(-1)" class="px-5 py-2 rounded-lg text-sm font-semibold bg-gray-100 hover:bg-gray-200 text-gray-600 invisible transition-all">
+                    Previous
+                </button>
+                <button type="button" id="nextBtn" onclick="navigateStep(1)" class="px-6 py-2 rounded-lg text-sm font-semibold bg-teal-600 hover:bg-teal-700 text-white transition-all shadow-md">
+                    Next
+                </button>
+                <button type="submit" id="submitBtn" class="hidden px-6 py-2 rounded-lg text-sm font-bold bg-green-600 hover:bg-green-700 text-white transition-all shadow-md">
+                    Submit Data
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-4 text-center text-xs">
+        <p>&copy; 2026 Academic Research Platform. All data strictly treated with confidentiality.</p>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        // Toggles local free text input areas
+        function toggleSpecify(elementId, shouldShow) {
+            const el = document.getElementById(elementId);
+            if (shouldShow) {
+                el.classList.remove('hidden');
+                el.setAttribute('required', 'true');
+            } else {
+                el.classList.add('hidden');
+                el.removeAttribute('required');
+                el.value = '';
+            }
+        }
+
+        // Toggles nested sub-panels conditionally based on parent inputs
+        function toggleConditional(panelId, shouldShow) {
+            const panel = document.getElementById(panelId);
+            if (shouldShow) {
+                panel.classList.remove('hidden');
+            } else {
+                panel.classList.add('hidden');
+                // Uncheck inner checked options and clear inner labels to clean up dataset
+                panel.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked = false);
+                panel.querySelectorAll('input[type="text"]').forEach(i => {
+                    i.value = '';
+                    i.classList.add('hidden');
+                });
+            }
+        }
+
+        // Controls field evaluation dynamically page-by-page inside the wizard architecture
+        function navigateStep(direction) {
+            if (direction === 1 && !validateCurrentStep()) {
+                alert("Please answer all required questions in this section before continuing.");
+                return;
+            }
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep += direction;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            updateUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Validates constraints programmatically before progress updates occur
+        function validateCurrentStep() {
+            const activeView = document.getElementById(`step${currentStep}`);
+            const inputs = activeView.querySelectorAll('[required]');
+            let valid = true;
+            inputs.forEach(input => {
+                if (input.type === 'radio') {
+                    const name = input.name;
+                    const group = activeView.querySelectorAll(`input[name="${name}"]:checked`);
+                    if (group.length === 0) valid = false;
+                } else if (!input.value.trim()) {
+                    valid = false;
+                }
+            });
+            return valid;
+        }
+
+        // Keeps track of steps, updates the progress bar, and swaps active buttons
+        function updateUI() {
+            // Update Navigation Buttons visibility
+            document.getElementById('prevBtn').style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+            
+            if (currentStep === totalSteps) {
+                document.getElementById('nextBtn').classList.add('hidden');
+                document.getElementById('submitBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('nextBtn').classList.remove('hidden');
+                document.getElementById('submitBtn').classList.add('hidden');
+            }
+            // Progress Bar status synchronization
+            const pct = (currentStep / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = `${pct}%`;
+            // Active tracking color label state mappings
+            const codes = ['A', 'B', 'C', 'D'];
+            codes.forEach((c, idx) => {
+                const el = document.getElementById(`prog-${c}`);
+                if (idx + 1 <= currentStep) {
+                    el.classList.add('text-teal-700', 'font-bold');
+                } else {
+                    el.classList.remove('text-teal-700', 'font-bold');
+                }
+            });
+        }
+
+        // Final Interception before standard external API email post takes place
+        function handleFormSubmit(event) {
+            const date = document.getElementById('survey_date').value;
+            const respNo = document.getElementById('respondent_no').value;
+            
+            if (!date || !respNo) {
+                event.preventDefault();
+                alert("Please fill in the collection Date and Respondent Number at the top.");
+                return;
+            }
+            
+            // Let the standard action form submit post process cleanly over to the target email
+            alert(`Sending survey data for Respondent No: ${respNo} directly to toneyclerk345@gmail.com...`);
+        }
+    </script>
+</body>
+</html>
